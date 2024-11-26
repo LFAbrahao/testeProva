@@ -2,6 +2,7 @@ package com.senac.cadastro.services;
 
 import java.util.List;
 
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
 
 import com.senac.cadastro.entities.Pessoa;
@@ -30,5 +31,10 @@ public class PessoaService {
 		}else {
 			return null;
 		}
+	}
+	
+	@RabbitListener(queues = "fila-cadastro")
+	private void subscribe (Pessoa pessoa) {
+		System.out.println(pessoa.getNome());
 	}
 }
