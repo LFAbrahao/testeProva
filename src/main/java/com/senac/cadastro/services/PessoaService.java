@@ -23,4 +23,12 @@ public class PessoaService {
 	public Pessoa adicionarPessoa(Pessoa pessoa) {
 		return pessoaRepository.save(pessoa);
 	}
+	
+	public Pessoa atualizarPessoa(int id,Pessoa pessoa) {
+		if (pessoaRepository.existsById(id)) {
+			return pessoaRepository.save(pessoa);
+		}else {
+			return null;
+		}
+	}
 }
