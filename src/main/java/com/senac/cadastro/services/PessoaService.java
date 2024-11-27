@@ -39,6 +39,15 @@ public class PessoaService {
 		}
 	}
 	
+	public String apagarPessoa(int id) {
+		try {
+			pessoaRepository.deleteById(id);
+			return "Pessoa Id: " + id +" apagado com sucesso.";
+		}catch(Error e) {
+			return e.getMessage().toString();
+		}
+	}
+	
 	@RabbitListener(queues = "fila-cadastro")
 	private void subscribe (Pessoa pessoa) {
 		System.out.println(pessoa.getNome());

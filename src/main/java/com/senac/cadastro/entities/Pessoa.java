@@ -21,7 +21,15 @@ public class Pessoa implements Serializable {
 	private String nome;
 	@Column(name="pessoa_cpf")
 	private String cpf;
+	@Column(name="pessoa_status")
+	private int status;
 	
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
 	public int getId() {
 		return id;
 	}
